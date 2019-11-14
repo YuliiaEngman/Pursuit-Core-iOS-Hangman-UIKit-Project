@@ -32,7 +32,7 @@
                                 <rect key="frame" x="51" y="156.66666666666663" width="312" height="224"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHn-Q2-Gls">
-                                <rect key="frame" x="130" y="388.66666666666669" width="154" height="36"/>
+                                <rect key="frame" x="100" y="388.66666666666669" width="214" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,6 +46,9 @@
                                 <rect key="frame" x="158" y="493.66666666666669" width="98" height="36.000000000000057"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="New Game"/>
+                                <connections>
+                                    <action selector="newGamePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2qw-b4-yBr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -54,11 +57,11 @@
                             <constraint firstItem="xl2-5v-diX" firstAttribute="top" secondItem="CEs-YU-5pL" secondAttribute="bottom" constant="20" id="4x6-Fm-3La"/>
                             <constraint firstItem="CEs-YU-5pL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7UY-Ug-75b"/>
                             <constraint firstItem="FHn-Q2-Gls" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9He-gT-1GS"/>
-                            <constraint firstItem="FHn-Q2-Gls" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="A28-F9-Goo"/>
+                            <constraint firstItem="FHn-Q2-Gls" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="A28-F9-Goo"/>
                             <constraint firstItem="iy9-ra-QWB" firstAttribute="top" secondItem="vGl-wK-QBd" secondAttribute="bottom" constant="25" id="Bdm-Ex-ZHv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iy9-ra-QWB" secondAttribute="trailing" constant="158" id="Bsb-aP-bBT"/>
                             <constraint firstItem="YfT-nV-YHG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dig-OJ-EJV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FHn-Q2-Gls" secondAttribute="trailing" constant="130" id="LWa-pN-tYy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FHn-Q2-Gls" secondAttribute="trailing" constant="100" id="LWa-pN-tYy"/>
                             <constraint firstItem="YfT-nV-YHG" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="MjN-zs-EHh"/>
                             <constraint firstItem="vGl-wK-QBd" firstAttribute="top" secondItem="FHn-Q2-Gls" secondAttribute="bottom" constant="10" id="S8d-w9-Otk"/>
                             <constraint firstItem="YfT-nV-YHG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.6" id="Us1-zD-GZF"/>
@@ -76,6 +79,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="displayedWordLabel" destination="FHn-Q2-Gls" id="FK7-nV-Id1"/>
+                        <outlet property="hangingImage" destination="YfT-nV-YHG" id="XDR-bT-hWw"/>
+                        <outlet property="newGameButton" destination="iy9-ra-QWB" id="8Y1-9E-d8l"/>
+                        <outlet property="player1UserInputTF" destination="xl2-5v-diX" id="NXn-36-M6O"/>
+                        <outlet property="player2EnterLetterTF" destination="vGl-wK-QBd" id="kpT-Sh-p8a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

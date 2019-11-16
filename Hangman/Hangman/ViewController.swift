@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var hangingImage: UIImageView!
     @IBOutlet weak var displayedWordLabel: UILabel!
     @IBOutlet weak var player2EnterLetterTF: UITextField!
+    @IBOutlet weak var winLooseLabel: UILabel!
     @IBOutlet weak var newGameButton: UIButton!
     
     
@@ -51,6 +52,7 @@ class ViewController: UIViewController {
         guessMax = 7
         player1UserInputTF.text = ""
         displayedWordLabel.text = ""
+        player2EnterLetterTF.isEnabled = true
         
     }
     
@@ -84,6 +86,9 @@ extension ViewController: UITextFieldDelegate {
                     hiddenWord[index] = user2Input
                     displayedWordLabel.text = String(hiddenWord)
                     player2EnterLetterTF.text = ""
+                    if !hiddenWord.contains("_") {
+                        player2EnterLetterTF.isEnabled = false
+                    }
                 } else {
                     guessMax -= 1
                     hangingImage.isHidden = false
@@ -131,7 +136,7 @@ extension ViewController: UITextFieldDelegate {
 //            }
                  
         }
-         } while guessMax > 0
+         } while guessMax > 0 || !hiddenWord.contains("_")
         }
         
         return true

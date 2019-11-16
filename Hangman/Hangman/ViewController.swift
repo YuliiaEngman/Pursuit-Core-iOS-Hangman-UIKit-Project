@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var user2Input: Character = "a"
     var hiddenWord: [Character] = []
     let alphabets: Set<Character> = Set("abcdefghijklmnopqrstuvwxyz")
+    var guessMax = 7
     
     
     override func viewDidLoad() {
@@ -47,13 +48,17 @@ class ViewController: UIViewController {
     
     @IBAction func newGamePressed(_ sender: UIButton) {
         hangingImage.isHidden = true
-        var guessMax = 7
+        guessMax = 7
+        player1UserInputTF.text = ""
+        displayedWordLabel.text = ""
+        
     }
     
 }
 
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         
         if textField == player1UserInputTF {
             user1Input = Array(player1UserInputTF.text ?? "")
@@ -64,11 +69,11 @@ extension ViewController: UITextFieldDelegate {
             displayedWordLabel.text = String(hiddenWord)
             textField.resignFirstResponder()
         } else {
-            var guessMax = 7
-            
+
             user2Input = Character(player2EnterLetterTF.text ?? "")
             var indices: Set<Int> = []
             
+            repeat {
             for (index, char) in user1Input.enumerated() {
                 if user2Input == char {
                     indices.insert(index)
@@ -98,12 +103,11 @@ extension ViewController: UITextFieldDelegate {
                     case 0:
                         hangingImage.image = #imageLiteral(resourceName: "hang7")
                     default:
-                        hangingImage.image = #imageLiteral(resourceName: "hang7")
+                        hangingImage.image = #imageLiteral(resourceName: "cat")
                     }
                  player2EnterLetterTF.text = ""
                     
                 }
-                
                 
 //                var currentSegmenyIndex: Int = 0{
 //                       didSet {
@@ -125,8 +129,11 @@ extension ViewController: UITextFieldDelegate {
 //                
 //                
 //            }
+                 
         }
+         } while guessMax > 0
         }
+        
         return true
     }
 }

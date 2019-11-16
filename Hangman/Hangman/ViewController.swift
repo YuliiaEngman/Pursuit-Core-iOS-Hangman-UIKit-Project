@@ -46,6 +46,7 @@ class ViewController: UIViewController {
     //    var hiddenWord: [Character] = Array(repeating: "_", count: randomWord.count)
     
     @IBAction func newGamePressed(_ sender: UIButton) {
+        hangingImage.isHidden = true
         var guessMax = 7
     }
     
@@ -78,8 +79,44 @@ extension ViewController: UITextFieldDelegate {
                     hiddenWord[index] = user2Input
                     displayedWordLabel.text = String(hiddenWord)
                     player2EnterLetterTF.text = ""
+                } else {
+                    guessMax -= 1
+                    hangingImage.isHidden = false
+                    switch guessMax {
+                    case 6:
+                        hangingImage.image = #imageLiteral(resourceName: "hang1")
+                    case 5:
+                        hangingImage.image = #imageLiteral(resourceName: "hang2")
+                    case 4:
+                        hangingImage.image = #imageLiteral(resourceName: "hang3")
+                    case 3:
+                        hangingImage.image = #imageLiteral(resourceName: "hang4")
+                    case 2:
+                        hangingImage.image = #imageLiteral(resourceName: "hang5")
+                    case 1:
+                        hangingImage.image = #imageLiteral(resourceName: "hang6")
+                    case 0:
+                        hangingImage.image = #imageLiteral(resourceName: "hang7")
+                    default:
+                        hangingImage.image = #imageLiteral(resourceName: "hang7")
+                    }
+                 player2EnterLetterTF.text = ""
+                    
                 }
                 
+                
+//                var currentSegmenyIndex: Int = 0{
+//                       didSet {
+//                           switch segmentedControl.selectedSegmentIndex {
+//                           case 0:
+//                               imageView.image = #imageLiteral(resourceName: "cat")
+//                           case 1:
+//                               imageView.image = #imageLiteral(resourceName: "dog")
+//                           default:
+//                               imageView.image = #imageLiteral(resourceName: "pitons")
+//                           }
+//                       }
+//                   }
                 
 //                if !hiddenWord.contains("_") {
 //                    print("CONGRATULATIONS!!! You win!")

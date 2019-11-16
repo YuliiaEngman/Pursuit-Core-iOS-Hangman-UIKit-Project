@@ -17,8 +17,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     
     
-    var user1Input = ""
+    var user1Input: [String.Element] = []
     var user2Input: Character = "a"
+    var hiddenWord: [Character] = []
+    let alphabets: Set<Character> = Set("abcdefghijklmnopqrstuvwxyz")
     
     
     override func viewDidLoad() {
@@ -44,6 +46,7 @@ class ViewController: UIViewController {
     //    var hiddenWord: [Character] = Array(repeating: "_", count: randomWord.count)
     
     @IBAction func newGamePressed(_ sender: UIButton) {
+        var guessMax = 7
     }
     
 }
@@ -51,10 +54,9 @@ class ViewController: UIViewController {
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        var hiddenWord: [Character] = Array(repeating: "_", count: user1Input.count)
-        
         if textField == player1UserInputTF {
-            user1Input = player1UserInputTF.text ?? ""
+            user1Input = Array(player1UserInputTF.text ?? "")
+            hiddenWord = Array(repeating: "_", count: user1Input.count)
             
             // code from Alex: let hiddenWord = String(repeating: " _ ", count: user1Input.count) // _ _ _ _
             
@@ -62,8 +64,9 @@ extension ViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
         } else {
             var guessMax = 7
-            var indices: Set<Int> = []
             
+            user2Input = Character(player2EnterLetterTF.text ?? "")
+            var indices: Set<Int> = []
             
             for (index, char) in user1Input.enumerated() {
                 if user2Input == char {
@@ -73,18 +76,24 @@ extension ViewController: UITextFieldDelegate {
             for (index, _) in hiddenWord.enumerated() {
                 if indices.contains(index) {
                     hiddenWord[index] = user2Input
+                    displayedWordLabel.text = String(hiddenWord)
+                    player2EnterLetterTF.text = ""
                 }
-                if !hiddenWord.contains("_") {
-                    print("CONGRATULATIONS!!! You win!")
-                }
                 
                 
-                
-            }
+//                if !hiddenWord.contains("_") {
+//                    print("CONGRATULATIONS!!! You win!")
+//                }
+//                
+//                
+//                
+//            }
+        }
         }
         return true
     }
 }
+
 
 //var randomWord = Array(allWords.randomElement() ?? "animal")
 //

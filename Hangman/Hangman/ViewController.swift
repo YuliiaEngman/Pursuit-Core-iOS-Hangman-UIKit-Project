@@ -20,13 +20,6 @@ class ViewController: UIViewController {
     var hangMan = HangManClass()
     
     
-    var user1Input: [String.Element] = []
-    var user2Input: Character = "a"
-    var hiddenWord: [Character] = []
-    let alphabets: Set<Character> = Set("abcdefghijklmnopqrstuvwxyz")
-    var guessMax = 7
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         player1UserInputTF.delegate = self
@@ -37,26 +30,21 @@ class ViewController: UIViewController {
         displayedWordLabel.text = ""
         hangingImage.isHidden = true
         
-        
-        
-        
-        //    var hiddenWord: [Character] = Array(repeating: "_", count: player1UserInputTF.text?.count ?? 1)
-        //displayedWordLabel.text = String(hiddenWord)
-        
+        player2EnterLetterTF.isEnabled = false
         
     }
     
-    
-    //    var hiddenWord: [Character] = Array(repeating: "_", count: randomWord.count)
+  //var hiddenWord: [Character] = Array(repeating: "_", count: randomWord.count)
     
     @IBAction func newGamePressed(_ sender: UIButton) {
         hangingImage.isHidden = true
         player1UserInputTF.isHidden = false
-        guessMax = 7
+        hangMan.guessMax = 7
         player1UserInputTF.text = ""
         displayedWordLabel.text = ""
         player2EnterLetterTF.isEnabled = true
         winLooseLabel.text = "HANGMAN GAME"
+        player2EnterLetterTF.isEnabled = false
         
     }
     
@@ -71,6 +59,7 @@ extension ViewController: UITextFieldDelegate {
             }
             if hangMan.guessMax == 0 {
                 winLooseLabel.text = "YOU LOST!!!"
+                player2EnterLetterTF.isEnabled = false
             }
         }
         
@@ -83,8 +72,9 @@ extension ViewController: UITextFieldDelegate {
             }
             if !hangMan.hiddenWordArray.contains("_") {
                 winLooseLabel.text = "YOU WIN!!!"
-                hangingImage.isHidden = false
                 hangingImage.image = UIImage(named: "winLabel")
+                hangingImage.isHidden = false
+                player2EnterLetterTF.isEnabled = false
             }
         }
         
@@ -111,13 +101,14 @@ extension ViewController: UITextFieldDelegate {
         
         if textField == player1UserInputTF {
             hangMan.word = player1UserInputTF.text?.lowercased() ?? ""
-            hiddenWord = Array(repeating: "_", count: user1Input.count)
+            // hiddenWord = Array(repeating: "_", count: user1Input.count)
             
             // code from Alex: let hiddenWord = String(repeating: " _ ", count: user1Input.count) // _ _ _ _
             
             displayedWordLabel.text = hangMan.hiddenWord()
             textField.resignFirstResponder()
             player1UserInputTF.isHidden = true
+            player2EnterLetterTF.isEnabled = true
         } else if textField == player2EnterLetterTF {
             hangMan.letter = player2EnterLetterTF.text?.lowercased() ?? ""
             correcetGuessedLetter()
@@ -138,7 +129,7 @@ extension ViewController: UITextFieldDelegate {
         if textField == player2EnterLetterTF {
             if alphabet.contains(string.lowercased()) {
                 if player2EnterLetterTF.text?.count == 1 {
-                    return false // maybe true?
+                    return false
                 }
             }
             return true

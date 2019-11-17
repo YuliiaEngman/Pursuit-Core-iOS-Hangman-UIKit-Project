@@ -37,20 +37,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter letters here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vGl-wK-QBd">
-                                <rect key="frame" x="137" y="434.66666666666669" width="140" height="41.333333333333314"/>
+                                <rect key="frame" x="137" y="432.66666666666669" width="140" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iy9-ra-QWB">
-                                <rect key="frame" x="158" y="540" width="98" height="36"/>
+                                <rect key="frame" x="158" y="482.66666666666669" width="98" height="36.000000000000057"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="New Game"/>
                                 <connections>
                                     <action selector="newGamePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2qw-b4-yBr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syM-FP-q1K">
-                                <rect key="frame" x="20" y="491" width="374" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syM-FP-q1K">
+                                <rect key="frame" x="20" y="474.66666666666669" width="374" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -58,34 +58,33 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iy9-ra-QWB" secondAttribute="trailing" constant="158" id="2Ym-Iu-kZJ"/>
-                            <constraint firstItem="vGl-wK-QBd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4h0-oB-jul"/>
+                            <constraint firstItem="syM-FP-q1K" firstAttribute="top" secondItem="vGl-wK-QBd" secondAttribute="bottom" constant="8" id="1No-fQ-tCO"/>
                             <constraint firstItem="xl2-5v-diX" firstAttribute="top" secondItem="CEs-YU-5pL" secondAttribute="bottom" constant="20" id="4x6-Fm-3La"/>
                             <constraint firstItem="CEs-YU-5pL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7UY-Ug-75b"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iy9-ra-QWB" secondAttribute="bottom" constant="286" id="7mj-BW-5JR"/>
                             <constraint firstItem="FHn-Q2-Gls" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9He-gT-1GS"/>
                             <constraint firstItem="FHn-Q2-Gls" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="A28-F9-Goo"/>
-                            <constraint firstItem="iy9-ra-QWB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="158" id="CCb-PG-jBQ"/>
-                            <constraint firstItem="syM-FP-q1K" firstAttribute="top" secondItem="vGl-wK-QBd" secondAttribute="bottom" constant="15" id="Crb-so-tUv"/>
                             <constraint firstItem="syM-FP-q1K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DdL-wF-Mfm"/>
                             <constraint firstItem="YfT-nV-YHG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dig-OJ-EJV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iy9-ra-QWB" secondAttribute="trailing" constant="158" id="Jeq-SO-hqU"/>
+                            <constraint firstItem="iy9-ra-QWB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="158" id="KKC-MU-LOW"/>
+                            <constraint firstItem="vGl-wK-QBd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="137" id="Keq-re-XLt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FHn-Q2-Gls" secondAttribute="trailing" constant="100" id="LWa-pN-tYy"/>
                             <constraint firstItem="YfT-nV-YHG" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.25" id="MjN-zs-EHh"/>
-                            <constraint firstItem="vGl-wK-QBd" firstAttribute="top" secondItem="FHn-Q2-Gls" secondAttribute="bottom" constant="10" id="S8d-w9-Otk"/>
                             <constraint firstItem="YfT-nV-YHG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.6" id="Us1-zD-GZF"/>
                             <constraint firstItem="xl2-5v-diX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VJG-sy-Kb1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vGl-wK-QBd" secondAttribute="trailing" constant="137" id="Vss-mQ-nya"/>
                             <constraint firstItem="YfT-nV-YHG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.753623" id="ZA3-N0-eah"/>
-                            <constraint firstItem="iy9-ra-QWB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bYL-Vk-BYS"/>
                             <constraint firstItem="syM-FP-q1K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dA3-QH-V0Q"/>
+                            <constraint firstItem="iy9-ra-QWB" firstAttribute="top" secondItem="syM-FP-q1K" secondAttribute="bottom" constant="8" id="dIh-uw-3zc"/>
                             <constraint firstItem="CEs-YU-5pL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="dwI-BU-9jU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xl2-5v-diX" secondAttribute="trailing" constant="20" id="fk7-4O-vmK"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vGl-wK-QBd" secondAttribute="trailing" constant="137" id="gHz-Me-e7B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="syM-FP-q1K" secondAttribute="trailing" constant="20" id="gqB-PA-1hZ"/>
                             <constraint firstItem="YfT-nV-YHG" firstAttribute="top" secondItem="xl2-5v-diX" secondAttribute="bottom" constant="8" id="m8c-Mi-ygY"/>
-                            <constraint firstItem="vGl-wK-QBd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="137" id="pkr-fj-4M4"/>
-                            <constraint firstItem="iy9-ra-QWB" firstAttribute="top" secondItem="syM-FP-q1K" secondAttribute="bottom" constant="19" id="utP-n5-Quo"/>
+                            <constraint firstItem="vGl-wK-QBd" firstAttribute="top" secondItem="FHn-Q2-Gls" secondAttribute="bottom" constant="8" id="v0B-ne-QHl"/>
                             <constraint firstItem="xl2-5v-diX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wDG-nY-4Fa"/>
+                            <constraint firstItem="syM-FP-q1K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="z3I-uj-gpY"/>
                             <constraint firstItem="FHn-Q2-Gls" firstAttribute="top" secondItem="YfT-nV-YHG" secondAttribute="bottom" constant="8" id="zbR-ZW-Yo1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="syM-FP-q1K" secondAttribute="trailing" constant="20" id="zcR-Yw-8QD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -95,7 +94,7 @@
                         <outlet property="newGameButton" destination="iy9-ra-QWB" id="8Y1-9E-d8l"/>
                         <outlet property="player1UserInputTF" destination="xl2-5v-diX" id="NXn-36-M6O"/>
                         <outlet property="player2EnterLetterTF" destination="vGl-wK-QBd" id="kpT-Sh-p8a"/>
-                        <outlet property="winLooseLabel" destination="syM-FP-q1K" id="91O-PS-ndt"/>
+                        <outlet property="winLooseLabel" destination="CEs-YU-5pL" id="PEW-v9-maE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

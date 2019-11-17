@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F6AD13B2381D75D00210E1D /* HangManClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6AD13A2381D75D00210E1D /* HangManClass.swift */; };
 		57FCB5F421A36D3D00163B8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCB5F321A36D3D00163B8E /* AppDelegate.swift */; };
 		57FCB5F621A36D3D00163B8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FCB5F521A36D3D00163B8E /* ViewController.swift */; };
 		57FCB5F921A36D3D00163B8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57FCB5F721A36D3D00163B8E /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F6AD13A2381D75D00210E1D /* HangManClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangManClass.swift; sourceTree = "<group>"; };
 		57FCB5F021A36D3D00163B8E /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FCB5F321A36D3D00163B8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57FCB5F521A36D3D00163B8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				57FCB5F321A36D3D00163B8E /* AppDelegate.swift */,
 				57FCB5F521A36D3D00163B8E /* ViewController.swift */,
+				0F6AD13A2381D75D00210E1D /* HangManClass.swift */,
 				57FCB5F721A36D3D00163B8E /* Main.storyboard */,
 				57FCB5FA21A36D3E00163B8E /* Assets.xcassets */,
 				57FCB5FC21A36D3E00163B8E /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F6AD13B2381D75D00210E1D /* HangManClass.swift in Sources */,
 				57FCB5F621A36D3D00163B8E /* ViewController.swift in Sources */,
 				57FCB5F421A36D3D00163B8E /* AppDelegate.swift in Sources */,
 			);

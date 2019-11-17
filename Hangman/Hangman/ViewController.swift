@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var winLooseLabel: UILabel!
     @IBOutlet weak var newGameButton: UIButton!
     
+    var hangMan = HangManClass()
+    
     
     var user1Input: [String.Element] = []
     var user2Input: Character = "a"
@@ -49,10 +51,12 @@ class ViewController: UIViewController {
     
     @IBAction func newGamePressed(_ sender: UIButton) {
         hangingImage.isHidden = true
+        player1UserInputTF.isHidden = false
         guessMax = 7
         player1UserInputTF.text = ""
         displayedWordLabel.text = ""
         player2EnterLetterTF.isEnabled = true
+        winLooseLabel.text = "HANGMAN GAME"
         
     }
     
@@ -61,170 +65,92 @@ class ViewController: UIViewController {
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        func incorrectGuess() {
+            if !hangMan.word.contains(hangMan.letter) {
+                hangMan.guessMax -= 1
+            }
+            if hangMan.guessMax == 0 {
+                winLooseLabel.text = "YOU LOST!!!"
+            }
+        }
+        
+        func correcetGuessedLetter() {
+            for (index, char) in hangMan.word.enumerated() {
+                if hangMan.letter == String(char) {
+                    hangMan.hiddenWordArray[index] = hangMan.letter
+                }
+                displayedWordLabel.text = hangMan.hiddenWordArray.joined(separator: " ")
+            }
+            if !hangMan.hiddenWordArray.contains("_") {
+                winLooseLabel.text = "YOU WIN!!!"
+                hangingImage.isHidden = false
+                hangingImage.image = UIImage(named: "winLabel")
+            }
+        }
+        
+        func imageChange() {
+            hangingImage.isHidden = false
+            switch hangMan.guessMax {
+            case 6:
+                hangingImage.image = UIImage(named: "hang1")
+            case 5:
+                hangingImage.image = UIImage(named: "hang2")
+            case 4:
+                hangingImage.image = UIImage(named: "hang3")
+            case 3:
+                hangingImage.image = UIImage(named: "hang4")
+            case 2:
+                hangingImage.image = UIImage(named: "hang5")
+            case 1:
+                hangingImage.image = UIImage(named: "hang6")
+            default:
+                hangingImage.image = UIImage(named: "hang7")
+            }
+        }
+        
         
         if textField == player1UserInputTF {
-            user1Input = Array(player1UserInputTF.text ?? "")
+            hangMan.word = player1UserInputTF.text?.lowercased() ?? ""
             hiddenWord = Array(repeating: "_", count: user1Input.count)
             
             // code from Alex: let hiddenWord = String(repeating: " _ ", count: user1Input.count) // _ _ _ _
             
-            displayedWordLabel.text = String(hiddenWord)
+            displayedWordLabel.text = hangMan.hiddenWord()
             textField.resignFirstResponder()
-        } else {
-
-            user2Input = Character(player2EnterLetterTF.text ?? "")
-            var indices: Set<Int> = []
+            player1UserInputTF.isHidden = true
+        } else if textField == player2EnterLetterTF {
+            hangMan.letter = player2EnterLetterTF.text?.lowercased() ?? ""
+            correcetGuessedLetter()
+            incorrectGuess()
+            if hangMan.guessMax < 7 {
+                imageChange()
+            }
+            print(hangMan.hiddenWordArray)
             
-            repeat {
-            for (index, char) in user1Input.enumerated() {
-                if user2Input == char {
-                    indices.insert(index)
+        }
+        textField.text = ""
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let alphabet = hangMan.alphabet
+        
+        if textField == player2EnterLetterTF {
+            if alphabet.contains(string.lowercased()) {
+                if player2EnterLetterTF.text?.count == 1 {
+                    return false // maybe true?
                 }
             }
-            for (index, _) in hiddenWord.enumerated() {
-                if indices.contains(index) {
-                    hiddenWord[index] = user2Input
-                    displayedWordLabel.text = String(hiddenWord)
-                    player2EnterLetterTF.text = ""
-                    if !hiddenWord.contains("_") {
-                        player2EnterLetterTF.isEnabled = false
-                    }
-                } else {
-                    guessMax -= 1
-                    hangingImage.isHidden = false
-                    switch guessMax {
-                    case 6:
-                        hangingImage.image = #imageLiteral(resourceName: "hang1")
-                    case 5:
-                        hangingImage.image = #imageLiteral(resourceName: "hang2")
-                    case 4:
-                        hangingImage.image = #imageLiteral(resourceName: "hang3")
-                    case 3:
-                        hangingImage.image = #imageLiteral(resourceName: "hang4")
-                    case 2:
-                        hangingImage.image = #imageLiteral(resourceName: "hang5")
-                    case 1:
-                        hangingImage.image = #imageLiteral(resourceName: "hang6")
-                    case 0:
-                        hangingImage.image = #imageLiteral(resourceName: "hang7")
-                    default:
-                        hangingImage.image = #imageLiteral(resourceName: "cat")
-                    }
-                 player2EnterLetterTF.text = ""
-                    
-                }
-                
-//                var currentSegmenyIndex: Int = 0{
-//                       didSet {
-//                           switch segmentedControl.selectedSegmentIndex {
-//                           case 0:
-//                               imageView.image = #imageLiteral(resourceName: "cat")
-//                           case 1:
-//                               imageView.image = #imageLiteral(resourceName: "dog")
-//                           default:
-//                               imageView.image = #imageLiteral(resourceName: "pitons")
-//                           }
-//                       }
-//                   }
-                
-//                if !hiddenWord.contains("_") {
-//                    print("CONGRATULATIONS!!! You win!")
-//                }
-//                
-//                
-//                
-//            }
-                 
+            return true
+        } else if textField == player1UserInputTF {
+            if alphabet.contains(string.lowercased()) {
+                return true
+            }
         }
-         } while guessMax > 0 || !hiddenWord.contains("_")
-        }
-        
-        return true
+        return false
     }
 }
 
 
-//var randomWord = Array(allWords.randomElement() ?? "animal")
-//
-//var hiddenWord: [Character] = Array(repeating: "_", count: randomWord.count)
-//
-//
-//
-//var enteredChar: Character
-//
-//let alphabets: Set<Character> = Set("abcdefghijklmnopqrstuvwxyz")
-//
-//func resetGame() {
-//    print("Reseting game.....")
-//    guessMax = 6
-//    randomWord = Array(allWords.randomElement() ?? "animal")
-//    hiddenWord = Array(repeating: "_", count: randomWord.count)
-//}
-//
-//repeat {
-//    print("Your word to guess is:")
-//    print(hiddenWord)
-//    print("Enter just 1 character from \"a-z\"")
-//    print(String(hiddenWord)) // "hi" is not a character app will crash
-//    let userInput = readLine()?.lowercased() ?? ""
-//    if userInput.count != 1 {
-//        print("Please enter ONLY 1 character.")
-//        continue
-//    }
-//    enteredChar = Character(userInput)
-//    var indices: Set<Int> = []
-//
-//    if !randomWord.contains(enteredChar) {
-//        guessMax -= 1
-//        hangmanArt()
-//        print("""
-//The word does not contain such letter.
-//You have \(guessMax) attempt left.
-//""")
-//
-//        if guessMax == 0 {
-//            print("Sorry, you lost...")
-//            print("The hidden word was \(randomWord)")
-//            print("Do you want to play again? \"Yes\" or \"No\"?")
-//            let response = readLine()?.lowercased() ?? ""
-//            if response == "yes" {
-//                // reset all variable to default values
-//                resetGame()
-//            }
-//        }
-//
-//        continue
-//    }
-//
-//    for (index, char) in randomWord.enumerated() {
-//        if enteredChar == char {
-//            indices.insert(index)
-//        }
-//    }
-//
-//    for (index, _) in hiddenWord.enumerated() {
-//        if indices.contains(index) {
-//            hiddenWord[index] = enteredChar
-//        }
-//        if !hiddenWord.contains("_") {
-//            print("CONGRATULATIONS!!! You win!")
-//            print("The hidden word was \(hiddenWord)")
-//            sleep(2)
-//            print("Do you want to play again?")
-//            print("Yes or No?")
-//
-//            let continueGame = readLine()?.lowercased() ?? "no"
-//
-//            if continueGame == "yes" {
-//                resetGame()
-//                continue
-//            }
-//        }
-//    }
-//
-//    // print(String(hiddenWord))
-//} while guessMax >= 1 && randomWord != hiddenWord
-//
-// print("Goodbye! See you next time!")
 
 
